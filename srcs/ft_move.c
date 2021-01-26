@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:28:41 by user42            #+#    #+#             */
-/*   Updated: 2021/01/23 17:28:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/01/25 17:51:14 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_right(void)
 		g_game->cam->posx -= -g_game->cam->diry * g_game->cam->move_speed;
 	if (g_game->info->map[(int)(g_game->cam->posx + (2) *
 		g_game->cam->move_speed)]
-	[(int)(g_game->cam->posy - (2) * g_game->cam->move_speed)] == '0')
+	[(int)(g_game->cam->posy - ((2 * g_game->cam->dirx) * g_game->cam->move_speed))] == '0')
 		g_game->cam->posy -= g_game->cam->dirx * g_game->cam->move_speed;
 }
 

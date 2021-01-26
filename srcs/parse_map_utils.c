@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:31:39 by user42            #+#    #+#             */
-/*   Updated: 2021/01/25 11:32:14 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/26 23:48:48 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,27 @@ void	ft_add_text2(char **str, t_format *info)
 
 int		ft_add_text(char **str, t_format *info)
 {
-	if (ft_strcmp(str[0], "NO") == 0)
+	if (ft_strcmp(str[0], "NO") == 0 && !(info->no))
 	{
 		info->no = malloc(sizeof(char) * (ft_strlen(str[1]) + 1));
 		info->no = ft_strlcpy(info->no, str[1], ft_strlen(str[1]));
 	}
-	if (ft_strcmp(str[0], "SO") == 0)
+	if (ft_strcmp(str[0], "SO") == 0 && !(info->so))
 	{
 		info->so = malloc(sizeof(char) * (ft_strlen(str[1]) + 1));
 		info->so = ft_strlcpy(info->so, str[1], ft_strlen(str[1]));
 	}
-	if (ft_strcmp(str[0], "WE") == 0)
+	if (ft_strcmp(str[0], "WE") == 0 && !(info->we))
 	{
 		info->we = malloc(sizeof(char) * (ft_strlen(str[1]) + 1));
 		info->we = ft_strlcpy(info->we, str[1], ft_strlen(str[1]));
 	}
-	if (ft_strcmp(str[0], "EA") == 0)
+	if (ft_strcmp(str[0], "EA") == 0 && !(info->ea))
 	{
 		info->ea = malloc(sizeof(char) * (ft_strlen(str[1]) + 1));
 		info->ea = ft_strcpy(info->ea, str[1]);
 	}
-	if (ft_strcmp(str[0], "S") == 0)
+	if (ft_strcmp(str[0], "S") == 0 && (!info->sprite))
 		ft_add_text2(str, info);
 	return (1);
 }
@@ -59,28 +59,12 @@ int		ft_add_res(char **str, t_format *info)
 	return (1);
 }
 
-int		ft_add_color(char **str, t_format *info)
+int		ft_add_color(char **str, t_format *info, char *line)
 {
-	char	**dst;
-
-	dst = ft_split(str[1], ',');
 	if (ft_strcmp(str[0], "F") == 0)
-	{
-		info->floor[0] = ft_strlcpy(info->floor[0], dst[0], ft_strlen(dst[0]));
-		free_tab(dst);
-		dst = ft_split(str[2], ',');
-		info->floor[1] = ft_strlcpy(info->floor[1], dst[0], ft_strlen(dst[0]));
-		info->floor[2] = ft_strlcpy(info->floor[2], str[3], ft_strlen(str[3]));
-	}
+		add_color_floor(info, line);
 	else if (ft_strcmp(str[0], "C") == 0)
-	{
-		info->roof[0] = ft_strlcpy(info->roof[0], dst[0], ft_strlen(dst[0]));
-		free_tab(dst);
-		dst = ft_split(str[2], ',');
-		info->roof[1] = ft_strlcpy(info->roof[1], dst[0], ft_strlen(dst[0]));
-		info->roof[2] = ft_strlcpy(info->roof[2], str[3], ft_strlen(str[3]));
-	}
-	free_tab(dst);
+		add_color_roof(info, line);
 	return (0);
 }
 
@@ -91,14 +75,17 @@ int		ft_add_info(char **line, t_format **info)
 	str = ft_split(*line, ' ');
 	if (str[0] == NULL)
 		return (0);
+	check_double(str[0], *info);
 	if (ft_strcmp(str[0], "NO") == 0 || ft_strcmp(str[0], "SO") == 0
 	|| ft_strcmp(str[0], "WE") == 0 || ft_strcmp(str[0], "EA") == 0 ||
 	ft_strcmp(str[0], "S") == 0)
+	{
 		ft_add_text(str, *info);
+	}
 	if (ft_strcmp(str[0], "R") == 0)
 		ft_add_res(str, *info);
 	if (ft_strcmp(str[0], "F") == 0 || ft_strcmp(str[0], "C") == 0)
-		ft_add_color(str, *info);
+		ft_add_color(str, *info, *line);
 	free_tab(str);
 	return (0);
 }

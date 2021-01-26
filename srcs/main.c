@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:31:08 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 18:12:40 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/25 14:31:41 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_format	*init_main(t_format *info, int ac, char **av)
 		return (NULL);
 	if (info->error == 1)
 	{
-		printf("Error\nMauvais caractère en début de ligne/ ligne vide map\n");
+		printf("Error\nMauvaise ligne/ ligne vide map\n");
 		free_i(info);
 		exit(0);
 	}

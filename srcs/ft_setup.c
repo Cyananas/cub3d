@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:29:33 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 20:03:17 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/26 18:44:49 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		ft_setup_utils(t_format *info)
 	i = 0;
 	while (i < 3)
 	{
-		info->floor[i] = (char *)ft_calloc(1, sizeof(char*));
+		info->floor[i] = (char *)ft_calloc(4, sizeof(char));
 		i++;
 	}
 	info->floor[3] = 0;

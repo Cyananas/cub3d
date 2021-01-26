@@ -6,7 +6,7 @@
 /*   By: pravry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:42:53 by pravry            #+#    #+#             */
-/*   Updated: 2021/01/24 18:08:02 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/25 20:43:46 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ void	ft_check_error(char c)
 	}
 }
 
+int		ft_check_char(int i, int j)
+{
+	char a;
+
+	a = g_game->info->map[i][j];
+	if (a == 'N' || a == 'S' || a == 'W' || a == 'E')
+		return (1);
+	return (0);
+}
+
 void	ft_check(int i, int j)
 {
 	int ligne;
@@ -72,7 +82,7 @@ void	ft_check(int i, int j)
 
 	ligne = ft_mapsize(1);
 	colonne = ft_mapsize(2);
-	if (g_game->info->map[i][j] == '0' || g_game->info->map[i][j] == '2')
+	if (g_game->info->map[i][j] == '0' || g_game->info->map[i][j] == '2' || ft_check_char(i, j) == 1)
 	{
 		if (i == 0 || i == ligne || j == colonne || j == 0)
 		{

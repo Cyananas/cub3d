@@ -6,11 +6,11 @@
 #    By: pravry <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 15:26:28 by pravry            #+#    #+#              #
-#    Updated: 2021/01/24 19:51:41 by pravry           ###   ########.fr        #
+#    Updated: 2021/01/26 16:59:39 by pravry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -g -Wall -Wextra -Werror
 
 MAC =  -I ./includes -I ./includes/minilib
 
@@ -22,6 +22,7 @@ NAME = cub3D
 
 SRCS = 		srcs/check_info.c\
 			srcs/close_window.c\
+			srcs/check_double.c\
 			srcs/dda_utils.c\
 			srcs/draw.c\
 			srcs/exit_prog.c\
@@ -61,7 +62,8 @@ SRCS = 		srcs/check_info.c\
 			srcs/sprite2.c\
 			srcs/sprite.c\
 			srcs/trace.c\
-			srcs/cub3.c
+			srcs/add_color.c\
+			srcs/cub3.c\
 
 HEADERS = cub3d.h
 

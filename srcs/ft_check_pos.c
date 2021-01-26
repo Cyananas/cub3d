@@ -6,7 +6,7 @@
 /*   By: pravry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:39:13 by pravry            #+#    #+#             */
-/*   Updated: 2021/01/24 11:11:14 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/25 20:30:06 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_check_pos(char c, int i, int j)
 	}
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
-		g_game->cam->posx = i;
-		g_game->cam->posy = j;
+		g_game->cam->posx = i + 0.5;
+		g_game->cam->posy = j + 0.5;
 		g_game->cam->dir = c;
 		g_game->info->map[i][j] = '0';
 	}

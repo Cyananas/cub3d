@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:27:32 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 18:07:52 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/26 23:13:08 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ int					ft_strcmp(char *s1, char *s2);
 char				**ft_split(char const *s, char c);
 t_format			*ft_setup(t_format *info, char *av);
 void				*ft_calloc(size_t count, size_t size);
+void				check_double(char *s, t_format *info);
 char				*ft_strlcpy(char *dst, const char *src, size_t srcsize);
 char				*ft_strjoinmap(char *src, int size);
 int					ft_map(t_format *info, int size);
@@ -200,7 +201,7 @@ void				free_cam(void);
 void				free_info2(void);
 int					ft_add_text(char **str, t_format *info);
 int					ft_add_res(char **str, t_format *info);
-int					ft_add_color(char **str, t_format *info);
+int					ft_add_color(char **str, t_format *info, char *line);
 int					ft_add_info(char **line, t_format **info);
 void				free_tab(char **tab);
 char				*ft_strcpy(char *dst, char *src);
@@ -227,5 +228,7 @@ void				nbr_sprite(void);
 void				ft_screen(t_format *info, t_win *win);
 void				ft_font(void);
 int					check_ligne_vide(t_format *info);
+void				add_color_floor(t_format *info, char *line);
+void				add_color_roof(t_format *info, char *line);
 
 #endif
