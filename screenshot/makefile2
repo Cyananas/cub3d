@@ -1,27 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile2                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: pravry <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 15:26:28 by pravry            #+#    #+#              #
-#    Updated: 2021/01/27 23:05:29 by pravry           ###   ########.fr        #
+#    Updated: 2021/01/27 22:41:10 by pravry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc -g -Wall -Wextra -Werror
 
-MAC = -I ./includes -I ./includes/minilib
+MAC = -I/usr/include -I ./includes -I ./includes/mlx_linux
 
-LIB = -L ./includes/minilib -lmlx_Linux -lXext -lX11 -lm 
+LIB = -L ./mlx_linux -lmlx_Linux -L /usr/lib -lXext -lX11 -lm 
 
 SRCS_DIR = srcs/
 
 NAME = cub3D
 
-SRCS = 		srcs/ft_atoi.c\
-			srcs/check_info.c\
+SRCS = 		srcs/check_info.c\
 			srcs/close_window.c\
 			srcs/check_double.c\
 			srcs/dda_utils.c\
@@ -30,6 +29,7 @@ SRCS = 		srcs/ft_atoi.c\
 			srcs/free_i.c\
 			srcs/free_struct.c\
 			srcs/free_tab.c\
+			srcs/ft_atoi.c\
 			srcs/ft_calloc.c\
 			srcs/ft_check.c\
 			srcs/ft_check_map.c\
@@ -73,22 +73,20 @@ OBJECT = $(SRCS:.c=.o)
 %.o : %.c
 	$(CC) $(MAC) -c $< -o $@
 
+all:
+	$(MAKE) --silent -C ./mlx_linux
+	$(NAME)
+
 $(NAME): $(OBJECT)
 	@$(CC) $(MAC) $(OBJECT) $(LIB) -o $(NAME)
-	@$(MAKE) -C ./includes/minilib 
-
-all:
-	$(MAKE) -C ./includes/minilib
-	$(NAME)
 
 clean:
 	@rm -rf $(OBJECT)
-	@$(MAKE) clean --silent -C ./includes/minilib
+	@$(MAKE) clean --silent -C ./mlx_linux
 
 fclean: clean
 	@rm -rf $(NAME)
 	
-re : fclean $(NAME)
-
+re : fclean all
 	
 .PHONY: re clean fclean 

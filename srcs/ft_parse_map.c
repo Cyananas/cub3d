@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:29:13 by user42            #+#    #+#             */
-/*   Updated: 2021/01/27 21:12:47 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 21:52:35 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int	ft_parse_map(t_format *info, int fd)
 			info->error = info->error + 1;
 		if (line[0] == ' ' && !(info->map))
 			info->error = info->error + 1;
+		if (!line)
+			printf("2\n");
 		if (line[0] == ' ' && (info->map))
 		{
 			info->error = info->error - 1;
