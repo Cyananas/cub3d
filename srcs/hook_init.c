@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:30:32 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 16:12:32 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 15:44:30 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_release_hook(int key)
 {
-	if (key == 97)
+	if (key == 113)
 		g_game->win->a = 0;
 	if (key == 115)
 		g_game->win->s = 0;
@@ -33,7 +33,7 @@ int		key_press_hook(int key)
 {
 	if (key == 65307)
 		exit_prog(key);
-	if (key == 97)
+	if (key == 113)
 		g_game->win->a = 1;
 	else if (key == 115)
 		g_game->win->s = 1;

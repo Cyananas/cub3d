@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:29:33 by user42            #+#    #+#             */
-/*   Updated: 2021/01/26 18:44:49 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 11:52:27 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void		ft_setup_utils(t_format *info)
 
 t_format	*ft_setup(t_format *info, char *av)
 {
-
 	if ((info = malloc(sizeof(t_format))) == NULL)
 		return (NULL);
 	info->no = NULL;

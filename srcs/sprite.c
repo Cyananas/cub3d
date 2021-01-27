@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:32:08 by user42            #+#    #+#             */
-/*   Updated: 2021/01/25 11:45:11 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:42:57 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void	ft_sort(float *sprite_distance, float *spr, int nb_spr)
 			tmp = spr[(i + 1) * 2 + 1];
 			spr[(i + 1) * 2 + 1] = spr[i * 2 + 1];
 			spr[i * 2 + 1] = tmp;
+			tmp = sprite_distance[i + 1];
+			sprite_distance[i + 1] = sprite_distance[i];
+			sprite_distance[i] = tmp;
+			i = -1;
 		}
 		i++;
 	}
@@ -63,7 +67,7 @@ void	ft_sort_spr(float *spr, int nb_spr)
 	i = 0;
 	while (i < nb_spr)
 	{
-		sprite_distance[i] = ((g_game->cam->posx - spr[i * 2]) *
+		sprite_distance[i] = (float)((g_game->cam->posx - spr[i * 2]) *
 			(g_game->cam->posx - spr[i * 2]) + (g_game->cam->posy -
 			spr[i * 2 + 1]) * (g_game->cam->posy - spr[i * 2 + 1]));
 		i++;

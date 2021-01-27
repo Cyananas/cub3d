@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:31:39 by user42            #+#    #+#             */
-/*   Updated: 2021/01/26 23:48:48 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 15:39:49 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ int		ft_add_res(char **str, t_format *info)
 
 int		ft_add_color(char **str, t_format *info, char *line)
 {
+	if (check_color(line) == -1)
+	{
+		fill_neg(info->roof);
+		fill_neg(info->floor);
+		return (0);
+	}
 	if (ft_strcmp(str[0], "F") == 0)
 		add_color_floor(info, line);
 	else if (ft_strcmp(str[0], "C") == 0)
@@ -76,12 +82,11 @@ int		ft_add_info(char **line, t_format **info)
 	if (str[0] == NULL)
 		return (0);
 	check_double(str[0], *info);
-	if (ft_strcmp(str[0], "NO") == 0 || ft_strcmp(str[0], "SO") == 0
-	|| ft_strcmp(str[0], "WE") == 0 || ft_strcmp(str[0], "EA") == 0 ||
-	ft_strcmp(str[0], "S") == 0)
-	{
+	if ((ft_strlen1(str) == 2) && (ft_strcmp(str[0], "NO") == 0
+		|| ft_strcmp(str[0], "SO") == 0 ||
+		ft_strcmp(str[0], "WE") == 0 || ft_strcmp(str[0], "EA") == 0
+		|| ft_strcmp(str[0], "S") == 0))
 		ft_add_text(str, *info);
-	}
 	if (ft_strcmp(str[0], "R") == 0)
 		ft_add_res(str, *info);
 	if (ft_strcmp(str[0], "F") == 0 || ft_strcmp(str[0], "C") == 0)

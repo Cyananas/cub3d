@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:27:32 by user42            #+#    #+#             */
-/*   Updated: 2021/01/26 23:13:08 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:44:20 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,8 +227,11 @@ int					setup_game2(char **av);
 void				nbr_sprite(void);
 void				ft_screen(t_format *info, t_win *win);
 void				ft_font(void);
-int					check_ligne_vide(t_format *info);
+int					check_ligne_vide(t_format *info, char **tmp);
 void				add_color_floor(t_format *info, char *line);
 void				add_color_roof(t_format *info, char *line);
+void				fill_neg(char **inf);
+int					check_color(char *line);
+char				*join_line(char **tab);
 
 #endif

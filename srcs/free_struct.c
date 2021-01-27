@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:27:57 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 17:34:37 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 11:46:38 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_win(void)
 		if (g_game->text->ea_tex)
 			mlx_destroy_image(g_game->win->mlx, g_game->text->ea_tex->img_ptr);
 		mlx_destroy_image(g_game->win->mlx, g_game->win->img_ptr);
-		if (g_game->win->win)
+		if (g_game->bmp == 0)
 		{
 			mlx_clear_window(g_game->win->mlx, g_game->win->win);
 			mlx_destroy_window(g_game->win->mlx, g_game->win->win);

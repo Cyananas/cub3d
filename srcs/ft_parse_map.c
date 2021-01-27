@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:29:13 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 20:02:28 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 15:28:12 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	check_char(char **tmp)
 		(ft_strcmp(tmp[0], "SO") != 0) && (ft_strcmp(tmp[0], "WE") != 0)
 		&& (ft_strcmp(tmp[0], "EA") != 0) && (ft_strcmp(tmp[0], "S") != 0))
 	{
-		printf("Error\nMauvaise ligne dans le fichier config\n");
 		return (0);
 	}
 	return (1);
@@ -96,11 +95,9 @@ int	ft_parse_map(t_format *info, int fd)
 	{
 		tmp = ft_split(line, ' ');
 		if ((*tmp && (*tmp[0] != '1' && *tmp[0] != '2' && *tmp[0] != '0')
-			&& (((info->map) && info->map[0][0]) ||
-			(!*tmp && ((info->map) && check_ligne_vide(info) == 0)))))
-		{
+			&& (((info->map) && info->map[0][0]))) || ((info->map) &&
+			(check_ligne_vide(info, tmp) == 0)))
 			info->error = 1;
-		}
 		if (check_char(tmp) == 0)
 			info->error = 1;
 		if (*tmp && (*tmp[0] == '1' || *tmp[0] == '2' || *tmp[0] == '0'))

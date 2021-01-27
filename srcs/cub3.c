@@ -6,13 +6,13 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:27:17 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 19:50:11 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 11:57:31 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_win	*ft_save_win()
+t_win	*ft_save_win(void)
 {
 	int	endian;
 	int	pixel;

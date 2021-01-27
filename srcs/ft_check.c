@@ -6,33 +6,11 @@
 /*   By: pravry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:42:53 by pravry            #+#    #+#             */
-/*   Updated: 2021/01/25 20:43:46 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:43:34 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int		check_ligne_vide(t_format *info)
-{
-	int	i;
-	int	j;
-	int	size;
-
-	i = 0;
-	size = ft_strlen1(info->map);
-	while (info->map[i])
-	{
-		j = 0;
-		while (info->map[i][j])
-		{
-			if (info->map[i][j] == '0' && i == size - 1)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 void	ft_check_error_map(void)
 {
@@ -70,9 +48,28 @@ int		ft_check_char(int i, int j)
 	char a;
 
 	a = g_game->info->map[i][j];
-	if (a == 'N' || a == 'S' || a == 'W' || a == 'E')
+	if (a == 'N' || a == 'S' || a == 'W' || a == 'E' || a == '0' || a == '2')
 		return (1);
 	return (0);
+}
+
+int		check_ligne_vide(t_format *info, char **tmp)
+{
+	int		j;
+	int		size;
+	char	a;
+
+	j = 0;
+	size = ft_strlen1(info->map);
+	while (info->map[size - 1][j])
+	{
+		a = info->map[size - 1][j];
+		if ((a == 'N' || a == 'S' || a == 'W' || a == 'E'
+			|| a == '0' || a == '2') && !*tmp)
+			return (0);
+		j++;
+	}
+	return (1);
 }
 
 void	ft_check(int i, int j)
@@ -82,7 +79,7 @@ void	ft_check(int i, int j)
 
 	ligne = ft_mapsize(1);
 	colonne = ft_mapsize(2);
-	if (g_game->info->map[i][j] == '0' || g_game->info->map[i][j] == '2' || ft_check_char(i, j) == 1)
+	if (ft_check_char(i, j) == 1)
 	{
 		if (i == 0 || i == ligne || j == colonne || j == 0)
 		{
