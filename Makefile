@@ -6,7 +6,7 @@
 #    By: pravry <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 15:26:28 by pravry            #+#    #+#              #
-#    Updated: 2021/01/27 11:20:53 by pravry           ###   ########.fr        #
+#    Updated: 2021/01/27 18:50:19 by pravry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,15 +76,17 @@ OBJECT = $(SRCS:.c=.o)
 $(NAME): $(OBJECT)
 	@$(CC) $(MAC) $(OBJECT) $(LIB) -o $(NAME)
 
-all: $(NAME)
+all:
+	$(MAKE) -C ./includes/minilib 
+	$(NAME)
 
 clean:
 	@rm -rf $(OBJECT)
+	@$(MAKE) -C ./includes/minilib
 
 fclean: clean
 	@rm -rf $(NAME)
 	
-
 re : fclean all
 
 .PHONY: re clean fclean 

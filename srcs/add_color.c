@@ -6,7 +6,7 @@
 /*   By: pravry <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 14:55:08 by pravry            #+#    #+#             */
-/*   Updated: 2021/01/27 12:20:38 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:55:00 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*join_line(char **tab)
 	j = 0;
 	s = 0;
 	if ((dst = malloc(sizeof(char) * (tot_size(tab) +
-		ft_strlen1(tab)))) == NULL)
+		ft_strlen1(tab) + 1))) == NULL)
 		return (NULL);
 	while (i < ft_strlen1(tab))
 	{
