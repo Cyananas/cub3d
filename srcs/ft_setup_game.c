@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:33:23 by user42            #+#    #+#             */
-/*   Updated: 2021/01/24 16:46:56 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:46:41 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_win	*ft_setup_win(t_format *info, t_win *win)
 	w = ft_atoi(info->r[0]);
 	h = ft_atoi(info->r[1]);
 	win->size_line = 4 * w;
-	win->win = mlx_new_window(win->mlx, w, h, "title");
+	win->win = mlx_new_window(win->mlx, w, h, "cub3d");
 	win->img_ptr = mlx_new_image(win->mlx, ft_atoi(info->r[0]),
 		ft_atoi(info->r[1]));
 	win->img = mlx_get_data_addr(win->img_ptr, &pixel,
