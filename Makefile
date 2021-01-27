@@ -6,7 +6,7 @@
 #    By: pravry <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 15:26:28 by pravry            #+#    #+#              #
-#    Updated: 2021/01/27 18:50:19 by pravry           ###   ########.fr        #
+#    Updated: 2021/01/27 21:34:05 by pravry           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,11 +82,11 @@ all:
 
 clean:
 	@rm -rf $(OBJECT)
-	@$(MAKE) -C ./includes/minilib
+	@make clean -C ./includes/minilib
 
 fclean: clean
 	@rm -rf $(NAME)
 	
-re : fclean all
+re : fclean $(NAME)
 
 .PHONY: re clean fclean 

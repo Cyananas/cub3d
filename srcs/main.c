@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:31:08 by user42            #+#    #+#             */
-/*   Updated: 2021/01/25 14:31:41 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 21:12:52 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_format	*init_main(t_format *info, int ac, char **av)
 	parse_input(av, ac);
 	if ((info = ft_setup(info, av[1])) == NULL)
 		return (NULL);
-	if (info->error == 1)
+	if (info->error > 0)
 	{
 		printf("Error\nMauvaise ligne/ ligne vide map\n");
 		free_i(info);

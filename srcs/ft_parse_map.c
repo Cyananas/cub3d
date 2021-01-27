@@ -6,7 +6,7 @@
 /*   By: user42 <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 17:29:13 by user42            #+#    #+#             */
-/*   Updated: 2021/01/27 15:28:12 by pravry           ###   ########.fr       */
+/*   Updated: 2021/01/27 21:12:47 by pravry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,16 @@ int	ft_parse_map(t_format *info, int fd)
 		if ((*tmp && (*tmp[0] != '1' && *tmp[0] != '2' && *tmp[0] != '0')
 			&& (((info->map) && info->map[0][0]))) || ((info->map) &&
 			(check_ligne_vide(info, tmp) == 0)))
-			info->error = 1;
+			info->error = info->error + 1;
 		if (check_char(tmp) == 0)
-			info->error = 1;
+			info->error = info->error + 1;
+		if (line[0] == ' ' && !(info->map))
+			info->error = info->error + 1;
+		if (line[0] == ' ' && (info->map))
+		{
+			info->error = info->error - 1;
+			ft_add_map(&line, info);
+		}
 		if (*tmp && (*tmp[0] == '1' || *tmp[0] == '2' || *tmp[0] == '0'))
 			ft_add_map(&line, info);
 		if (*tmp && (!info->map))
